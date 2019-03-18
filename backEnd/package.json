@@ -1,0 +1,31 @@
+{
+  "name": "backendexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "3.0.4",
+    "body-parser": "1.18.3",
+    "cors": "2.8.5",
+    "express": "4.16.4",
+    "http": "0.0.0",
+    "http-errors": "1.7.2",
+    "jsonwebtoken": "8.5.0",
+    "mysql2": "1.6.5",
+    "nodemailer": "5.1.1",
+    "path": "0.12.7",
+    "sequelize": "4.42.0",
+    "socket.io": "2.2.0",
+    "socket.io-emitter": "^3.1.1",
+    "socket.io-redis": "^5.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "sequelize-cli": "^5.4.0"
+  }
+}

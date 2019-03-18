@@ -1,0 +1,9 @@
+filtrosDigitais	KEYWORD1
+FPB	KEYWORD1
+MediaMovel	KEYWORD1
+
+setAlpha	KEYWORD2
+retValue	KEYWORD2
+setDimension	KEYWORD2
+setAlpha	KEYWORD2
+
