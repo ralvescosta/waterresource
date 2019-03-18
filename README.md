@@ -632,7 +632,7 @@ Tendo criado o repositório PRIVADO para deploy, clone este repositório em um d
 No diretório do backEnd, deve-se alterar o arquivo de variáveis ambientais para as configurações realizadas na máquina virtual, como mostrado o exemplo abaixo:
 </p>
 
-```
+```javascript
 module.exports = {
   username: "root",
   password: "YOUR_ROOT_PASSWORD",
@@ -661,7 +661,7 @@ Salve as alterações e em seguida exclua o arquivo .gitignore que esta no diret
 Acesse o diretório do frontEnd, exclua o arquivo .gitignore, semelhante ao que foi feito anteriormente, abra o arquivo src/environment.js, apague todo o conteúdo e copie o conteúdo apresentado abaixo:
 </p>
 
-```
+```javascript
 import socket from "socket.io-client"
 
 /*
