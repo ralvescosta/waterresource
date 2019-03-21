@@ -23,6 +23,7 @@ class Dashboard extends Component {
         super(props, context);
         this.state = {
             url: dashboadURL,
+            userId:'',
             status: {
                 mounted: true,
                 aux: false,
@@ -144,9 +145,9 @@ class Dashboard extends Component {
                 api.post("/users/verifytoken", { key: '' })
                     .then(response => {
                         if (response.data) {
-
                             if (response.data.acesso === 1) {
                                 this.setState({
+                                    userId: response.data.id,
                                     configuracao: {
                                         tempoAquisicao: response.data.aquisicao,
                                         aMax: response.data.aMax,
@@ -1454,12 +1455,15 @@ class Dashboard extends Component {
          * This function connect the UI with WebSocket server 
         */
         socketIO.on("gateway", response => {
-            this.barGraphic(response);
+            if(this.state.userId === response.userId){
+                this.barGraphic(response);
 
-            this.setState({
-                isPumpConfigured: response.isPumpConfigured,
-                isPumpBlocked: response.isPumpBlocked
-            })
+                this.setState({
+                    isPumpConfigured: response.isPumpConfigured,
+                    isPumpBlocked: response.isPumpBlocked
+                })
+            }
+
         })
 
     }
