@@ -131,6 +131,7 @@ exports.verifytoken = (req, res, next) => {
                 res.json({
                     id: user.id,
                     acesso: user.acesso,
+                    fullname:user.name,
                     aquisicao: user.aquisition,
                     aMax: user.aMax,
                     aMin: user.aMin,

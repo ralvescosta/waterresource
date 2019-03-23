@@ -62,7 +62,7 @@ class Dashboard extends Component {
             modalPumpAlertConfig: false,
             modalPumpSave: false,
             modalHistoryReading: false,
-            notifyToken: '',
+            lastAquisition: '',
             UserInfoAlert: {
                 message: '',
                 color: "success",
@@ -146,8 +146,13 @@ class Dashboard extends Component {
                     .then(response => {
                         if (response.data) {
                             if (response.data.acesso === 1) {
+                                console.log(response.data)
                                 this.setState({
                                     userId: response.data.id,
+                                    informacao: {
+                                        fullName: response.data.fullname,
+                                        addres: this.state.informacao.addres
+                                    },
                                     configuracao: {
                                         tempoAquisicao: response.data.aquisicao,
                                         aMax: response.data.aMax,
@@ -1271,7 +1276,9 @@ class Dashboard extends Component {
             Hour: createdAt.substring(13, 11) - 3,
             Minut: createdAt.substring(16, 14)
         }
-
+        this.setState({
+            lastAquisition: DbTime.Hour+":"+DbTime.Minut+ " - " +DbTime.Day+"/"+DbTime.Month+"/"+DbTime.Year
+        })
         if (currentTime.Month === parseInt(DbTime.Month)) {
             if (currentTime.Day === parseInt(DbTime.Day)) {
                 if ((currentTime.Hour - DbTime.Hour) <= 1) {
@@ -1831,6 +1838,7 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         </nav>
+                        <p className="text-muted">Bem vindo {this.state.informacao.fullName}</p>
                         {this.pumpConfiguration()}
                         <h2 className="text-center">Sistema de Controle</h2>
                         <hr />
@@ -1838,8 +1846,11 @@ class Dashboard extends Component {
                         <div>
                             <Alert className="text-center text-bg" color={this.state.UserInfoAlert.color}>
                                 <h2> Nível atual do reservatorio principal é de: {this.state.UserInfoAlert.nivel}%</h2>
+                                
                                 <p>{this.state.UserInfoAlert.message}</p>
                                 <p>Situação da Bomba: {this.state.pumpTxt}</p>
+                                <h6>Última aquisição:
+                                {" "+this.state.lastAquisition}</h6>
                             </Alert>
                         </div>
 
